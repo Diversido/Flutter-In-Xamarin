@@ -59,13 +59,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedJar Include="Jars\arm64_v8a_release-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
-    <EmbeddedJar Include="Jars\armeabi_v7a_release-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
-    <EmbeddedJar Include="Jars\flutter_embedding_release-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
-    <EmbeddedJar Include="Jars\x86_64_release-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
+    <LibraryProjectZip Include="..\..\flutter_module\build\host\outputs\repo\com\example\flutter_module\flutter_debug\1.0\flutter_debug-1.0.aar">
+      <Link>Jars\flutter_debug-1.0.aar</Link>
+    </LibraryProjectZip>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\flutter_release-1.0.aar" />
+    <EmbeddedJar Include="Jars\x86_debug-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
+    <EmbeddedJar Include="Jars\flutter_embedding_debug-1.0.0-540786dd51f112885a89792d678296b95e6622e5.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

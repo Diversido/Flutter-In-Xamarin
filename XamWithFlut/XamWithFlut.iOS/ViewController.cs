@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using System;
+using System.Diagnostics;
 using UIKit;
 using XamWithFlut.Binding.Flutter;
 
@@ -32,6 +33,28 @@ namespace XamWithFlut.iOS
 		{
 			var vc = new FlutterViewController (AppDelegate.FlutterEngine, null, null);
 			PresentViewController (vc, true, null);
+
+			var channel = FlutterMethodChannel.MethodChannelWithName("diversido.io/main", vc.BinaryMessenger);
+
+			channel.InvokeMethod("reset", NSNumber.FromNInt(11));
+
+			channel.SetMethodCallHandler((FlutterMethodCall call, FlutterResult result) =>
+			{
+				if (call.Method == "increment")
+				{
+					var counter = (int)(NSNumber)call.Arguments;
+
+					try
+					{
+						result((NSNumber)(counter + 1));
+					}
+					catch (Exception e)
+					{
+						Debug.WriteLine(e);
+					}
+				}
+			});
+
 		}
 	}
 }

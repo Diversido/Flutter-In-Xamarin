@@ -134,7 +134,19 @@ So far we just need a few adjustments to `Metadata.xml`:
 
 # Use in Xamarin Android project
 
-Ensure to migrate the project to `AndroidX`. There was a few issues with `Android.Support` so I've migrated to `AndroidX`.
+1. Ensure to migrate the project to `AndroidX`. There was a few issues with `Android.Support` so I've migrated to `AndroidX`.
+
+2. Though it works in the app with mixed `AndroidX` and `Android.Support`
+
+3. Reference `FlutterActivity` in `AndroidManifest.xml` 
+
+```xml
+	<application ...>
+		<activity android:name="io.flutter.embedding.android.FlutterActivity" android:theme="@style/AppTheme" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:windowSoftInputMode="adjustResize" />
+	</application>
+```
+
+## Usage
 
 ```csharp
 	public class MainActivity : AppCompatActivity
@@ -173,4 +185,15 @@ Ensure to migrate the project to `AndroidX`. There was a few issues with `Androi
 
 # Known issues
 
-Note: could not make **hot reload** to work
+1. Could not make **hot reload** to work
+2. Release iOS framework size is 340mb, DLLs build from that is 170mb (this related to Apple bitcode)
+
+
+
+# TODO
+
+1. How to debug flutter code run inside Xamarin app?
+2. How to make build smooth (1. build flutter, 2. make Xamarin bindings, 3. use as dependency in the app)?
+3. How to embed ViewController/Activity into the navigation flow?
+4. How to bind data?
+5. How to bind commands?

@@ -26,6 +26,11 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>None</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>Apple Development: Алексей Shikov (QNWYXR7832)</CodesignKey>
+        <DeviceSpecificBuild>false</DeviceSpecificBuild>
+        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+        <MtouchFloat32>true</MtouchFloat32>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -33,8 +38,11 @@
         <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <MtouchLink>None</MtouchLink>
+        <MtouchLink>SdkOnly</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
+        <MtouchUseLlvm>true</MtouchUseLlvm>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>Apple Development: Алексей Shikov (QNWYXR7832)</CodesignKey>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -46,8 +54,9 @@
         <WarningLevel>4</WarningLevel>
         <MtouchArch>ARM64</MtouchArch>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>Apple Development: Алексей Shikov (QNWYXR7832)</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
@@ -57,7 +66,8 @@
         <WarningLevel>4</WarningLevel>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchArch>ARM64</MtouchArch>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>Apple Development: Алексей Shikov (QNWYXR7832)</CodesignKey>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

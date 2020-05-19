@@ -43,11 +43,11 @@
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\flutter_module\build\ios\framework\Debug\Flutter.framework">
+    <NativeReference Include="..\..\flutter_module\build\ios\framework\Debug\App.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
-    <NativeReference Include="..\..\flutter_module\build\ios\framework\Debug\App.framework">
+    <NativeReference Include="..\..\flutter_module\build\ios\framework\Debug\Flutter.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>

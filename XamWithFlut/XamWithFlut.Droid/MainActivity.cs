@@ -7,12 +7,14 @@ using AndroidX.AppCompat.App;
 using Google.Android.Material.FloatingActionButton;
 using IO.Flutter.Embedding.Android;
 using IO.Flutter.Embedding.Engine;
+using IO.Flutter.Plugin.Common;
 using static IO.Flutter.Embedding.Engine.Dart.DartExecutor;
+using static IO.Flutter.Plugin.Common.MethodChannel;
 
 namespace XamWithFlut.Droid
 {
 	[Activity (Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
-	public class MainActivity : AppCompatActivity
+	public class MainActivity : AppCompatActivity, IMethodCallHandler
 	{
         static FlutterEngine flutterEngine;
 
@@ -48,10 +50,6 @@ namespace XamWithFlut.Droid
 
 		private void FabOnClick (object sender, EventArgs eventArgs)
 		{
-			//View view = (View)sender;
-			//Snackbar.Make (view, "Replace with your own action", Snackbar.LengthLong)
-			//	.SetAction ("Action", (Android.Views.View.IOnClickListener)null).Show ();
-
             if (flutterEngine == null)
             {
 				flutterEngine = new FlutterEngine(this);
@@ -61,6 +59,9 @@ namespace XamWithFlut.Droid
                 );
 
 				FlutterEngineCache.Instance.Put("my_engine", flutterEngine);
+
+				var channel = new MethodChannel(flutterEngine.DartExecutor.BinaryMessenger, "diversido.io/main");
+				channel.SetMethodCallHandler(this);
 			}
 
 			StartActivity (FlutterActivity.WithCachedEngine ("my_engine").Build (this));
@@ -72,6 +73,19 @@ namespace XamWithFlut.Droid
 
 			base.OnRequestPermissionsResult (requestCode, permissions, grantResults);
 		}
-	}
+
+        public void OnMethodCall(MethodCall call, IResult result)
+        {
+			if (call.Method == "increment")
+            {
+				var counter = (Java.Lang.Integer)call.Arguments();
+				result.Success(new Java.Lang.Integer (counter.IntValue() + 1));
+            }
+            else
+            {
+				result.NotImplemented();
+            }
+        }
+    }
 }
 
